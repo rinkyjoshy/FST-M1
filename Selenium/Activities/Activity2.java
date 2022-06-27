@@ -1,38 +1,44 @@
-package activities;
+package SeleniumActivities;
 
-import java.util.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
-public class Activity2 {
+public class Activity2  {
     public static void main(String[] args) {
-        //Initialize the array
-        int[] numArr = {10, 77, 10, 54, -11, 10};
-        System.out.println("Original Array: " + Arrays.toString(numArr));
+
         
-        //Set constants
-        int searchNum = 10;
-        int fixedSum = 30;
-
-        //Print result
-        System.out.println("Result: " + result(numArr, searchNum, fixedSum));
+        WebDriver driver = new FirefoxDriver();
+        
+        
+        driver.get("https://www.training-support.net");
+        
+        
+        String title = driver.getTitle();
+        
+        System.out.println("Page title is: " + title);
+        
+        
+        WebElement idLocator = driver.findElement(By.id("about-link"));
+        System.out.println("Text in idelement: " + idLocator.getText());
+        
+        
+        WebElement classNameLocator = driver.findElement(By.className("green"));
+        System.out.println("Text in classelement: " + classNameLocator.getText());
+        
+        
+        WebElement cssLocator = driver.findElement(By.cssSelector(".green"));
+        System.out.println("Text in csselement: " + cssLocator.getText());
+        
+        
+        WebElement linkTextLocator = driver.findElement(By.linkText("About Us"));
+        System.out.println("Text in element: " + linkTextLocator.getText());
+        
+        
+        driver.close();
     }
 
-    public static boolean result(int[] numbers, int searchNum, int fixedSum) {
-        int temp_sum = 0;
-        //Loop through array
-        for (int number : numbers) {
-            //If value is 10
-            if (number == searchNum) {
-                //Add them
-                temp_sum += searchNum;
-            }
+	}
 
-            //Sum should not be more than 30
-            if (temp_sum > fixedSum) {
-                break;
-            }
-        }
 
-        //Return true if condition satisfies
-        return temp_sum == fixedSum;
-    }
-}
