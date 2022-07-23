@@ -30,6 +30,6 @@ public class Activity10 {
         //Search for element
         System.out.println("Checking if M is present: " + hs.contains("M"));
         //Print updated HashSet
-        System.out.println("Updated HashSet: " + hs);
+        System.out.println("The Updated HashSet: " + hs);
     }
 }
